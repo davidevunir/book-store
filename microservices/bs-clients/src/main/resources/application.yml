@@ -1,0 +1,18 @@
+server:
+  port: 8082
+  http2:
+    enabled: true
+spring:
+  application:
+    name: bs-clients
+  datasource:
+    url: jdbc:postgresql://${CLIENT_DB_HOST}:${CLIENT_DB_PORT}/${CLIENT_DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: false
+    hostname: bs-clients

@@ -1,0 +1,18 @@
+server:
+  port: 8081
+  http2:
+    enabled: true
+spring:
+  application:
+    name: bs-catalog
+  datasource:
+    url: jdbc:postgresql://${CATALOG_DB_HOST}:${CATALOG_DB_PORT}/${CATALOG_DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: false
+    hostname: bs-catalog
