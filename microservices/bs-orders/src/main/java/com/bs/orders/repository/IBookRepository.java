@@ -16,5 +16,5 @@ public interface IBookRepository {
   Book getBookByIdAndActive(@PathVariable("id") UUID id, @RequestParam(required = false) Boolean active);
 
   @PatchMapping("/bookstore/v1/books/{id}")
-  Book updateBook(@PathVariable("id") UUID id, @RequestBody String item);
+  Book updateBook(@PathVariable("id") UUID id, @RequestBody String stock);
 }

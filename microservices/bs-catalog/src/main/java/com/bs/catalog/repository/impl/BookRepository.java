@@ -1,11 +1,11 @@
 package com.bs.catalog.repository.impl;
 
-import static com.bs.catalog.utils.Constants.ACTIVE;
-import static com.bs.catalog.utils.SearchOperation.EQUAL;
-import static com.bs.catalog.utils.SearchOperation.MATCH;
 import static lombok.AccessLevel.PRIVATE;
 import static com.bs.catalog.utils.Constants.TITLE;
 import static com.bs.catalog.utils.Constants.AUTHOR;
+import static com.bs.catalog.utils.Constants.ACTIVE;
+import static com.bs.catalog.utils.SearchOperation.MATCH;
+import static com.bs.catalog.utils.SearchOperation.EQUAL;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 import java.util.List;
@@ -13,12 +13,11 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import com.bs.catalog.utils.SearchCriteria;
-import com.bs.catalog.utils.SearchOperation;
 import com.bs.catalog.utils.SearchStatement;
 import com.bs.catalog.repository.model.Book;
+import org.springframework.stereotype.Repository;
 import com.bs.catalog.repository.IBookRepository;
 import com.bs.catalog.repository.BookJpaRepository;
-import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
@@ -35,15 +34,12 @@ public class BookRepository implements IBookRepository {
   @Override
   public List<Book> search(String title, String author, Boolean active) {
     SearchCriteria<Book> spec = new SearchCriteria<>();
-
     if (isNotBlank(title)) {
       spec.add(new SearchStatement(TITLE, title, MATCH));
     }
-
     if (isNotBlank(author)) {
       spec.add(new SearchStatement(AUTHOR, author, MATCH));
     }
-
     if (active != null) {
       spec.add(new SearchStatement(ACTIVE, active, EQUAL));
     }

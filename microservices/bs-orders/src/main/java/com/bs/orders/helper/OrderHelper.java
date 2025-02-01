@@ -1,16 +1,16 @@
 package com.bs.orders.helper;
 
-import static com.bs.orders.utils.Constants.STOCK;
 import static lombok.AccessLevel.PRIVATE;
+import static java.util.stream.Collectors.toMap;
+import static com.bs.orders.utils.Constants.STOCK;
+import static com.bs.orders.utils.Constants.CREATED_STATUS;
 
 import java.util.Map;
 import java.util.UUID;
 import java.util.List;
-import java.util.ArrayList;
 import feign.FeignException;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
-import java.util.stream.Collectors;
 import feign.FeignException.NotFound;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -63,6 +63,7 @@ public class OrderHelper {
     var orderEntity = Order.builder()
         .idClient(client.id())
         .createdAt(LocalDateTime.now())
+        .status(CREATED_STATUS)
         .build();
 
     var details = order.getDetail().stream()
@@ -90,12 +91,12 @@ public class OrderHelper {
   }
 
   public void updateStock(List<OrderDetailRequest> purchasedBooks, List<Book> books) {
-    var bookMap = books.stream().collect(Collectors.toMap(Book::id, book -> book));
+    var bookMap = books.stream().collect(toMap(Book::id, book -> book));
     for (var order : purchasedBooks) {
       var book = bookMap.get(order.getIdBook());
       try {
-        var jsonStock = objectMapper.writeValueAsString(Map.of(STOCK, (book.stock() - order.getQuantity())));
-        bookRepository.updateBook(book.id(), jsonStock);
+        var stock = objectMapper.writeValueAsString(Map.of(STOCK, (book.stock() - order.getQuantity())));
+        bookRepository.updateBook(book.id(), stock);
       } catch (Exception e) {
         log.error("Hubo un problema al actualizar el stock del libro: {}", book.title(), e);
       }

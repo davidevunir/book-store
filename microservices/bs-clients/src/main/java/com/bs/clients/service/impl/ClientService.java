@@ -11,13 +11,13 @@ import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.fge.jsonpatch.JsonPatchException;
 import com.bs.clients.service.IClientService;
 import com.bs.clients.repository.model.Client;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.stereotype.Service;
+import com.github.fge.jsonpatch.JsonPatchException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.bs.clients.repository.IClientRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @Slf4j
 @Service

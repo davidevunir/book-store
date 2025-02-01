@@ -1,19 +1,19 @@
 package com.bs.clients.repository.impl;
 
 import static lombok.AccessLevel.PRIVATE;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static com.bs.clients.utils.Constants.LAST_NAME;
 import static com.bs.clients.utils.Constants.FIRST_NAME;
 import static com.bs.clients.utils.SearchOperation.MATCH;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Repository;
 import com.bs.clients.utils.SearchCriteria;
 import com.bs.clients.utils.SearchStatement;
 import com.bs.clients.repository.model.Client;
+import org.springframework.stereotype.Repository;
 import com.bs.clients.repository.IClientRepository;
 import com.bs.clients.repository.ClientJpaRepository;
 
@@ -32,11 +32,9 @@ public class ClientRepository implements IClientRepository {
   @Override
   public List<Client> search(String firstName, String lastName) {
     SearchCriteria<Client> spec = new SearchCriteria<>();
-
     if (isNotBlank(firstName)) {
       spec.add(new SearchStatement(FIRST_NAME, firstName, MATCH));
     }
-
     if (isNotBlank(lastName)) {
       spec.add(new SearchStatement(LAST_NAME, lastName, MATCH));
     }

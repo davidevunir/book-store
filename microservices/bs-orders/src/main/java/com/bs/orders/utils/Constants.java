@@ -7,5 +7,7 @@ public class Constants {
   }
 
   public static final String STOCK = "stock";
-
+  public static final String STATUS = "status";
+  public static final String CREATED_STATUS = "INGRESADO";
+  public static final String CANCELLED_STATUS = "CANCELADO";
 }

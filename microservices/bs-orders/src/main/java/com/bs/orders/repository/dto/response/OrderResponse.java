@@ -24,5 +24,6 @@ public class OrderResponse {
   UUID idClient;
   LocalDateTime createdAt;
   Double totalAmount;
+  String status;
   List<OrderDetailResponse> orderDetailResponse;
 }

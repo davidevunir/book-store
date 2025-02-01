@@ -3,20 +3,20 @@ package com.bs.catalog.repository.model;
 import static lombok.AccessLevel.PRIVATE;
 import static jakarta.persistence.GenerationType.AUTO;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import java.util.UUID;
-import java.time.LocalDateTime;
 import lombok.Setter;
 import lombok.Getter;
 import lombok.Builder;
+import java.util.UUID;
+import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import lombok.experimental.FieldDefaults;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.NotNull;
 

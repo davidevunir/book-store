@@ -4,7 +4,6 @@ import static lombok.AccessLevel.PRIVATE;
 import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.GenerationType.AUTO;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.Builder;
@@ -44,6 +43,8 @@ public class Order {
 
   @NotNull(message = "El campo totalAmount es obligatorio")
   Double totalAmount;
+
+  String status;
 
   @OneToMany(mappedBy = "order", cascade = ALL)
   List<OrderDetail> orderDetails;
