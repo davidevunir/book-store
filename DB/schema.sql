@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS BOOK_ORDER
     ID_CLIENT       uuid          NOT NULL,
     CREATED_AT      timestamp     NOT NULL DEFAULT current_timestamp,
     TOTAL_AMOUNT    numeric(10,2) NOT NULL,
+    STATUS          varchar(20),
     CONSTRAINT PK_BOOK_ORDER PRIMARY KEY (ID_BOOK_ORDER)
 );
 

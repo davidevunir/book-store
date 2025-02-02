@@ -5,22 +5,20 @@ import static java.util.stream.Collectors.toMap;
 import static com.bs.orders.utils.Constants.STOCK;
 import static com.bs.orders.utils.Constants.CREATED_STATUS;
 
+import com.bs.orders.repository.impl.BookRepository;
 import java.util.Map;
 import java.util.UUID;
 import java.util.List;
-import feign.FeignException;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
-import feign.FeignException.NotFound;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import com.bs.orders.repository.dto.Book;
 import com.bs.orders.repository.dto.Client;
 import com.bs.orders.repository.model.Order;
 import org.springframework.stereotype.Component;
-import com.bs.orders.repository.IBookRepository;
 import com.bs.orders.repository.model.OrderDetail;
-import com.bs.orders.repository.IClientRepository;
+import com.bs.orders.repository.impl.ClientRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.bs.orders.repository.dto.request.OrderRequest;
 import com.bs.orders.repository.dto.request.OrderDetailRequest;
@@ -32,31 +30,15 @@ import com.bs.orders.repository.dto.request.OrderDetailRequest;
 public class OrderHelper {
 
   ObjectMapper objectMapper;
-  IBookRepository bookRepository;
-  IClientRepository clientRepository;
+  BookRepository bookRepository;
+  ClientRepository clientRepository;
 
   public Client fetchClient(UUID idClient) {
-    try {
-      return clientRepository.getClientById(idClient);
-    } catch (NotFound e) {
-      log.error("No se ha encontrado el cliente con id: {}", idClient);
-      return null;
-    } catch (FeignException e) {//cuando el microservicio clientes esté caído
-      log.error("Error interno al consultar el cliente con id: {}", idClient);
-      return null;
-    }
+    return clientRepository.getClientById(idClient);
   }
 
   public Book fetchBook(UUID idBook) {
-    try {
-      return bookRepository.getBookByIdAndActive(idBook, true);
-    } catch (NotFound e) {
-      log.error("No se ha encontrado un libro activo con id: {}", idBook);
-      return null;
-    } catch (FeignException e) {//cuando el microservicio catalog esté caído
-      log.error("Error interno al consultar el libro con id: {}", idBook);
-      return null;
-    }
+    return bookRepository.getBookByIdAndActive(idBook, true);
   }
 
   public Order setOrder(OrderRequest order, Client client, List<Book> books) {
