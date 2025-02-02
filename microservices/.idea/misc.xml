@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/bs-catalog/pom.xml" />
         <option value="$PROJECT_DIR$/bs-clients/pom.xml" />
         <option value="$PROJECT_DIR$/bs-orders/pom.xml" />
+        <option value="$PROJECT_DIR$/bs-gateway/pom.xml" />
       </list>
     </option>
   </component>

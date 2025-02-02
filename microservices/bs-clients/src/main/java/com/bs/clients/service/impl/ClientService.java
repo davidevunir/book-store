@@ -39,9 +39,9 @@ public class ClientService implements IClientService {
   }
 
   @Override
-  public List<Client> getAll(String firstName, String lastName) {
-    if (hasLength(firstName) || hasLength(lastName)) {
-      return repository.search(firstName, lastName);
+  public List<Client> getAll(String firstName, String lastName, Boolean active) {
+    if (hasLength(firstName) || hasLength(lastName) || active != null) {
+      return repository.search(firstName, lastName, active);
     }
 
     return repository.getAll();

@@ -8,7 +8,7 @@ public interface IClientRepository {
 
   List<Client> getAll();
 
-  List<Client> search(String firstName, String lastName);
+  List<Client> search(String firstName, String lastName, Boolean active);
 
   Client getById(UUID id);
 

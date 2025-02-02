@@ -19,7 +19,7 @@ eureka:
     initial-instance-info-replication-interval-seconds: 5
   instance:
     prefer-ip-address: false
-    hostname: bs-orders
+    hostname: localhost
 service:
   catalog:
     url: 'http://bs-catalog/%s'
