@@ -12,7 +12,7 @@ class CorsConfig {
   @Bean
   public CorsWebFilter corsWebFilter() {
     var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-    corsConfig.setAllowedOrigins(List.of("http://localhost:5170"));
+    corsConfig.setAllowedOrigins(List.of("http://localhost:5173"));
     corsConfig.setMaxAge(3600L);
     corsConfig.setAllowedMethods(List.of("POST"));
     corsConfig.setAllowedHeaders(List.of("*"));
