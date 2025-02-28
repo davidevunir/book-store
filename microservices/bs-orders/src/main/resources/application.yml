@@ -6,9 +6,12 @@ spring:
   application:
     name: bs-orders
   datasource:
-    url: jdbc:postgresql://${ORDER_DB_HOST}:${ORDER_DB_PORT}/${ORDER_DB_NAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    #url: jdbc:postgresql://${ORDER_DB_HOST}:${ORDER_DB_PORT}/${ORDER_DB_NAME}
+    #username: ${DB_USERNAME}
+    #password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/ORDERS_DB
+    username: postgres
+    password: 12345
 eureka:
   client:
     service-url:

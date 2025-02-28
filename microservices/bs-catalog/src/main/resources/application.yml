@@ -6,9 +6,13 @@ spring:
   application:
     name: bs-catalog
   datasource:
-    url: jdbc:postgresql://${CATALOG_DB_HOST}:${CATALOG_DB_PORT}/${CATALOG_DB_NAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+   # url: jdbc:postgresql://${CATALOG_DB_HOST}:${CATALOG_DB_PORT}/${CATALOG_DB_NAME}
+    #username: ${DB_USERNAME}
+    #password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/CATALOG_DB
+    username: postgres
+    password: 12345
+
 eureka:
   client:
     service-url:

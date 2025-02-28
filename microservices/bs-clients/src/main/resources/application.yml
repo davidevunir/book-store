@@ -6,9 +6,12 @@ spring:
   application:
     name: bs-clients
   datasource:
-    url: jdbc:postgresql://${CLIENT_DB_HOST}:${CLIENT_DB_PORT}/${CLIENT_DB_NAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    #url: jdbc:postgresql://${CLIENT_DB_HOST}:${CLIENT_DB_PORT}/${CLIENT_DB_NAME}
+    #username: ${DB_USERNAME}
+    #password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/CLIENTS_DB
+    username: postgres
+    password: 12345
 eureka:
   client:
     service-url:

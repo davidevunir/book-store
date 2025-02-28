@@ -6,7 +6,7 @@ import com.bs.clients.repository.model.Client;
 
 public interface IClientService {
 
-  List<Client> getAll(String firstName, String lastName, Boolean active);
+  List<Client> getAll(String firstName, String lastName, String email, Boolean active);
 
   Client getById(UUID id);
 

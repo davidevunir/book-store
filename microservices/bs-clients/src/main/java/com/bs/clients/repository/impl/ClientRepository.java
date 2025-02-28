@@ -1,10 +1,8 @@
 package com.bs.clients.repository.impl;
 
-import static com.bs.clients.utils.Constants.ACTIVE;
+import static com.bs.clients.utils.Constants.*;
 import static com.bs.clients.utils.SearchOperation.EQUAL;
 import static lombok.AccessLevel.PRIVATE;
-import static com.bs.clients.utils.Constants.LAST_NAME;
-import static com.bs.clients.utils.Constants.FIRST_NAME;
 import static com.bs.clients.utils.SearchOperation.MATCH;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -32,13 +30,16 @@ public class ClientRepository implements IClientRepository {
   }
 
   @Override
-  public List<Client> search(String firstName, String lastName, Boolean active) {
+  public List<Client> search(String firstName, String lastName,String email, Boolean active) {
     SearchCriteria<Client> spec = new SearchCriteria<>();
     if (isNotBlank(firstName)) {
       spec.add(new SearchStatement(FIRST_NAME, firstName, MATCH));
     }
     if (isNotBlank(lastName)) {
       spec.add(new SearchStatement(LAST_NAME, lastName, MATCH));
+    }
+    if (isNotBlank(email)) {
+      spec.add(new SearchStatement(EMAIL, email, MATCH));
     }
     if (active != null) {
       spec.add(new SearchStatement(ACTIVE, active, EQUAL));

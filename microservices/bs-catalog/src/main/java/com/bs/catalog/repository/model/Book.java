@@ -54,6 +54,7 @@ public class Book {
   LocalDateTime publishedAt;
   Integer stock;
   Boolean active;
+  String image_url;
 
   public void update(Book book) {
     this.title = book.getTitle();
@@ -64,6 +65,7 @@ public class Book {
     this.price = book.getPrice();
     this.publishedAt = book.getPublishedAt();
     this.stock = book.getStock();
+    this.image_url = book.getImage_url();
     this.active = book.getActive();
   }
 }

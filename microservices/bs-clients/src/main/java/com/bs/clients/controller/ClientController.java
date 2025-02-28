@@ -38,9 +38,11 @@ public class ClientController {
   private static final String ID = "id";
 
   @GetMapping
-  public ResponseEntity<List<Client>> getAll(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName,
+  public ResponseEntity<List<Client>> getAll(@RequestParam(required = false) String firstName,
+                                             @RequestParam(required = false) String lastName,
+                                             @RequestParam(required = false) String email,
       @RequestParam(required = false) Boolean active) {
-    return ok(service.getAll(firstName, lastName, active));
+    return ok(service.getAll(firstName, lastName, email, active));
   }
 
   @GetMapping("/{id}")
