@@ -80,9 +80,13 @@ public class OrderRepository implements IOrderRepository {
         .filter(detail -> {
           var book = books.stream()
               .filter(b -> b.id().equals(detail.getIdBook()))
-              .findFirst().orElseThrow();
+              .findFirst()
+              .orElseThrow();
+
           return book.stock() < detail.getQuantity();
-        }).map(OrderDetailRequest::getIdBook).toList();
+        })
+        .map(OrderDetailRequest::getIdBook)
+        .toList();
 
     if (!booksWithoutStock.isEmpty()) {
       log.error("Los siguientes libros no tienen stock suficiente: {}", booksWithoutStock);

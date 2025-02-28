@@ -6,6 +6,9 @@ import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.springframework.util.StringUtils.hasLength;
 import static com.github.fge.jsonpatch.mergepatch.JsonMergePatch.fromJson;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
 import java.util.List;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +32,7 @@ public class BookService implements IBookService {
   IBookRepository repository;
 
   private boolean exists(String title, String author) {
-    if (TRUE.equals(repository.existsByTitleAndAuthor(title, author))) {
+    if (repository.existsByTitleAndAuthor(title, author).equals(TRUE)) {
       log.error("El libro: {}, del autor: {}, ya existe en el sistema", title, author);
 
       return true;
@@ -76,7 +79,7 @@ public class BookService implements IBookService {
 
   @Override
   public Boolean removeById(UUID id) {
-    if (TRUE.equals(repository.existsById(id))) {
+    if (repository.existsById(id).equals(TRUE)) {
       repository.removeById(id);
 
       return true;

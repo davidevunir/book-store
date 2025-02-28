@@ -32,8 +32,8 @@ public class SearchCriteria<T> implements Specification<T> {
           case LESS_THAN_EQUAL -> builder.lessThanOrEqualTo(root.get(criteria.getKey()), criteria.getValue().toString());
           case NOT_EQUAL -> builder.notEqual(root.get(criteria.getKey()), criteria.getValue());
           case EQUAL -> builder.equal(root.get(criteria.getKey()), criteria.getValue());
-          case MATCH -> builder.like(builder.lower(root.get(criteria.getKey())), LIKE + convertToString(criteria.getValue()) + LIKE);
-          case MATCH_END -> builder.like(builder.lower(root.get(criteria.getKey())), convertToString(criteria.getValue()) + LIKE);
+          case MATCH -> builder.like(builder.lower(root.get(criteria.getKey())), LIKE + this.convertToString(criteria.getValue()) + LIKE);
+          case MATCH_END -> builder.like(builder.lower(root.get(criteria.getKey())), this.convertToString(criteria.getValue()) + LIKE);
         }).toList();
 
     return builder.and(predicates.toArray(Predicate[]::new));

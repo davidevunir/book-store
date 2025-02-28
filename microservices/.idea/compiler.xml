@@ -9,7 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="bs-eureka" />
       </profile>
-      <profile name="Annotation profile for bs-gateway" enabled="true">
+      <profile name="Annotation profile for bs-catalog" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -17,9 +17,9 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="bs-orders" />
+        <module name="bs-catalog" />
         <module name="bs-gateway" />
         <module name="bs-client" />
-        <module name="bs-catalog" />
       </profile>
     </annotationProcessing>
   </component>

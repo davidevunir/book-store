@@ -54,6 +54,7 @@ public class Book {
   LocalDateTime publishedAt;
   Integer stock;
   Boolean active;
+  String imageUrl;
 
   public void update(Book book) {
     this.title = book.getTitle();

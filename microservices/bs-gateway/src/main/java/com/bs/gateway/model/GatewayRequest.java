@@ -15,8 +15,8 @@ import org.springframework.web.server.ServerWebExchange;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = PRIVATE)
 public class GatewayRequest {
 
